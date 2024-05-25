@@ -9,6 +9,7 @@ const SongContainer = styled.div`
   text-overflow: ellipsis;
   text-shadow: 0px 0px 3px #c7b38b;
   color: #fff;
+  font-size: 20px;
 `;
 
 interface SongItemProps {
