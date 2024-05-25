@@ -55,6 +55,10 @@ const SongList: React.FC = () => {
       {mockSongs.map((song) => (
         <SongItem key={song.id} song={song} />
       ))}
+      <div style={{ gridColumnStart: "-1" }} />
+      {mockSongs.map((song) => (
+        <SongItem key={song.id} song={song} />
+      ))}
     </Grid>
   );
 };
