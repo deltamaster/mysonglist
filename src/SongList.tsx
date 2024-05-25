@@ -5,7 +5,7 @@ import SongItem from "./SongItem";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(30px, max-content));
   gap: 10px;
 `;
 
