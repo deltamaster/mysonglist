@@ -1,4 +1,4 @@
 export interface Song {
-  id: number;
+  id: string;
   name: string;
 }
