@@ -50,7 +50,6 @@ export const mockSongs: Song[] = [
   { "id": "rVwX2w", "name": "米店" }, 
   { "id": "r0ROlD", "name": "你走" }, 
   { "id": "rHjaL0", "name": "年轮" }, 
-  { "id": "r95MH1", "name": "年轮" }, 
   { "id": "r0ZfTQ", "name": "泡沫" }, 
   { "id": "rDLJuP", "name": "朋友" }, 
   { "id": "rYkWKy", "name": "麒麟" }, 
