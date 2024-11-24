@@ -14,7 +14,7 @@ const scrollAnimation = keyframes`
 
 const GridContainer = styled.div`
   overflow-y: hidden; /* Enable vertical scrolling */
-  max-height: 90vh; /* Adjust based on your screen size */
+  max-height: 95vh; /* Adjust based on your screen size */
 
   &::before,
   &::after {
