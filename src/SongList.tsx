@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import styled, { keyframes, css } from "styled-components";
 import { mockSongs } from "./mockSongs";
-import { Song } from "./Song";
+import { Song } from "./Song"; // Import Song from ./Song
 import SongItem from "./SongItem";
 
 // Define a keyframe animation for vertical scrolling
@@ -55,11 +55,14 @@ const SongList: React.FC = () => {
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Filter songs based on the search query (by name or singer)
-  const filteredSongs = mockSongs.filter(
-    (song: Song) =>
-      song.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      song.singer.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredSongs = mockSongs.filter((song: Song) =>
+    song.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    song.singer.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
 
   return (
     <div>
@@ -67,7 +70,7 @@ const SongList: React.FC = () => {
         type="text"
         placeholder="Search for a song or singer..."
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={handleSearchChange}
       />
       <GridContainer isSearching={!!searchQuery}>
         <Grid ref={gridRef}>
