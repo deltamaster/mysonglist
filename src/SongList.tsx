@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled, { keyframes, css } from "styled-components";
-import { mockSongs, Song } from "./mockSongs"; // Assume Song is defined here
+import { mockSongs } from "./mockSongs";
+import { Song } from "./Song";
 import SongItem from "./SongItem";
 
 // Define a keyframe animation for vertical scrolling
