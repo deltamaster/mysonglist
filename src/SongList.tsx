@@ -82,7 +82,25 @@ const SongList: React.FC = () => {
         const result = await response.json();
         
         if (result.data && result.data.songs && result.data.songs.items) {
-          setSongs(result.data.songs.items);
+          // 计算字符串的"长度"（非ASCII字符算作2个字符）
+          const getAdjustedLength = (str: string): number => {
+            let length = 0;
+            for (let i = 0; i < str.length; i++) {
+              const charCode = str.charCodeAt(i);
+              // 非ASCII字符（Unicode码点大于127）算作2个字符
+              length += (charCode > 127) ? 2 : 1;
+            }
+            return length;
+          };
+          
+          // 按照歌曲名称的调整后长度排序
+          const sortedSongs = [...result.data.songs.items].sort((a, b) => {
+            const lenA = getAdjustedLength(a.name);
+            const lenB = getAdjustedLength(b.name);
+            return lenA - lenB;
+          });
+          
+          setSongs(sortedSongs);
         }
       } catch (error) {
         console.error("Error fetching songs:", error);
