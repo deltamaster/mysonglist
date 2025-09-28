@@ -18,6 +18,14 @@ const SongContainer = styled.div<SongItemProps>`
   /* Dynamic grid column span based on song name length */
   grid-column-end: span
     ${(props) => Math.min(2 + Math.floor(props.song.name.length / 2.5), 8)};
+  /* Initial transition */
+  transition: transform 0.3s ease;
+  
+  /* Hover effect - double the size */
+  &:hover {
+    transform: scale(2);
+    z-index: 10;
+  }
 `;
 
 const SongItem: React.FC<SongItemProps> = ({ song }) => {

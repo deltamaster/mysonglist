@@ -130,17 +130,23 @@ const SongList: React.FC = () => {
       />
       <GridContainer isSearching={!!searchQuery}>
         <Grid ref={gridRef}>
-          {filteredSongs.map((song: Song) => (
-            <SongItem key={song.id} song={song} />
-          ))}
-          {!searchQuery && songs.length > 0 && (
-            <>
-              <div style={{ gridColumnStart: "-1" }} />
-              {songs.map((song: Song) => (
-                <SongItem key={song.id} song={song} />
-              ))}
-            </>
-          )}
+            {filteredSongs.map((song: Song) => (
+              <SongItem 
+                key={song.id} 
+                song={song} 
+              />
+            ))}
+            {!searchQuery && songs.length > 0 && (
+              <>
+                <div style={{ gridColumnStart: "-1" }} />
+                {songs.map((song: Song) => (
+                  <SongItem 
+                    key={song.id} 
+                    song={song} 
+                  />
+                ))}
+              </>
+            )}
         </Grid>
       </GridContainer>
     </div>
