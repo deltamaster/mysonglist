@@ -1,6 +1,5 @@
-import React, { useState, useRef, ChangeEvent } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
-import { mockSongs } from "./mockSongs";
 import { Song } from "./Song"; // Import Song from ./Song
 import SongItem from "./SongItem";
 
@@ -52,15 +51,54 @@ const SearchBox = styled.input`
 
 const SongList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [songs, setSongs] = useState<Song[]>([]);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Filter songs based on the search query (by name or singer)
-  const filteredSongs = mockSongs.filter((song: Song) =>
+  // Fetch songs from GraphQL API on page load
+  useEffect(() => {
+    const fetchSongs = async () => {
+      try {
+        const query = `
+          {
+            songs(first: 10000) {
+              items {
+                id
+                name
+                singers
+              }
+            }
+          }
+        `;
+
+        const endpoint = window.location.hostname === 'localhost' 
+          ? 'http://localhost:4280/data-api/graphql' 
+          : '/data-api/graphql';
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: query })
+        });
+
+        const result = await response.json();
+        
+        if (result.data && result.data.songs && result.data.songs.items) {
+          setSongs(result.data.songs.items);
+        }
+      } catch (error) {
+        console.error("Error fetching songs:", error);
+      }
+    };
+
+    fetchSongs();
+  }, []);
+
+  // Filter songs based on the search query (by name or singers)
+  const filteredSongs = songs.filter((song: Song) =>
     song.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    song.singer.toLowerCase().includes(searchQuery.toLowerCase())
+    song.singers.some(singer => singer.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
@@ -77,10 +115,10 @@ const SongList: React.FC = () => {
           {filteredSongs.map((song: Song) => (
             <SongItem key={song.id} song={song} />
           ))}
-          {!searchQuery && (
+          {!searchQuery && songs.length > 0 && (
             <>
               <div style={{ gridColumnStart: "-1" }} />
-              {mockSongs.map((song: Song) => (
+              {songs.map((song: Song) => (
                 <SongItem key={song.id} song={song} />
               ))}
             </>

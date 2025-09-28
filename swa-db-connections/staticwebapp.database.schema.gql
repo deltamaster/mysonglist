@@ -1,4 +1,5 @@
-type Person @model {
+type Song @model {
   id: ID
   name: String
+  singers: [String]
 }
