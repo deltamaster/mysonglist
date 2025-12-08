@@ -54,60 +54,45 @@ const SongList: React.FC = () => {
   const [songs, setSongs] = useState<Song[]>([]);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Fetch songs from GraphQL API on page load
+  // Load songs from static JSON file on page load
   useEffect(() => {
-    const fetchSongs = async () => {
+    const loadSongs = async () => {
       try {
-        const query = `
-          {
-            songs(first: 10000) {
-              items {
-                id
-                name
-                singers
-              }
-            }
-          }
-        `;
-
-        const endpoint = window.location.hostname === 'localhost' 
-          ? 'http://localhost:4280/data-api/graphql' 
-          : '/data-api/graphql';
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query: query })
-        });
-
-        const result = await response.json();
+        const response = await fetch('/songs.json');
+        const songsData = await response.json();
         
-        if (result.data && result.data.songs && result.data.songs.items) {
-          // 计算字符串的"长度"（非ASCII字符算作2个字符）
-          const getAdjustedLength = (str: string): number => {
-            let length = 0;
-            for (let i = 0; i < str.length; i++) {
-              const charCode = str.charCodeAt(i);
-              // 非ASCII字符（Unicode码点大于127）算作2个字符
-              length += (charCode > 127) ? 2 : 1;
-            }
-            return length;
-          };
-          
-          // 按照歌曲名称的调整后长度排序
-          const sortedSongs = [...result.data.songs.items].sort((a, b) => {
-            const lenA = getAdjustedLength(a.name);
-            const lenB = getAdjustedLength(b.name);
-            return lenA - lenB;
-          });
-          
-          setSongs(sortedSongs);
-        }
+        // Map JSON data to Song interface (extract id, name, singers, ignore status)
+        const songsArray: Song[] = songsData.map((song: any) => ({
+          id: song.id,
+          name: song.name,
+          singers: song.singers
+        }));
+
+        // 计算字符串的"长度"（非ASCII字符算作2个字符）
+        const getAdjustedLength = (str: string): number => {
+          let length = 0;
+          for (let i = 0; i < str.length; i++) {
+            const charCode = str.charCodeAt(i);
+            // 非ASCII字符（Unicode码点大于127）算作2个字符
+            length += (charCode > 127) ? 2 : 1;
+          }
+          return length;
+        };
+        
+        // 按照歌曲名称的调整后长度排序
+        const sortedSongs = songsArray.sort((a, b) => {
+          const lenA = getAdjustedLength(a.name);
+          const lenB = getAdjustedLength(b.name);
+          return lenA - lenB;
+        });
+        
+        setSongs(sortedSongs);
       } catch (error) {
-        console.error("Error fetching songs:", error);
+        console.error("Error loading songs:", error);
       }
     };
 
-    fetchSongs();
+    loadSongs();
   }, []);
 
   // Filter songs based on the search query (by name or singers)
