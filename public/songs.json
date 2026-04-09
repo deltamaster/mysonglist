@@ -452,5 +452,8 @@
   {"id":"rlfMjI","status":"OK","name":"一笑倾城","singers":["汪苏泷"]},
   {"id":"rYehEc","status":"OK","name":"奉上","singers":["刘宇宁"]},
   {"id":"rO98ft","status":"OK","name":"男女关系科","singers":["杨千嬅"]},
-  {"id":"rXatbR","status":"OK","name":"我坐在这里","singers":["林忆莲"]}
+  {"id":"rXatbR","status":"OK","name":"我坐在这里","singers":["林忆莲"]},
+  { "id": "rQN32a", "status":"OK","name": "芬梨道上", "singers": ["杨千嬅"] },
+  { "id": "rU4TM4", "status":"OK","name": "不醉不会", "singers": ["田馥甄"] },
+  { "id": "rkNNEs", "status":"OK","name": "陪你度过漫长岁月", "singers": ["陈奕迅"] }
 ]
