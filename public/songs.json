@@ -455,5 +455,7 @@
   {"id":"rXatbR","status":"OK","name":"我坐在这里","singers":["林忆莲"]},
   { "id": "rQN32a", "status":"OK","name": "芬梨道上", "singers": ["杨千嬅"] },
   { "id": "rU4TM4", "status":"OK","name": "不醉不会", "singers": ["田馥甄"] },
-  { "id": "rkNNEs", "status":"OK","name": "陪你度过漫长岁月", "singers": ["陈奕迅"] }
+  { "id": "rkNNEs", "status":"OK","name": "陪你度过漫长岁月", "singers": ["陈奕迅"] },
+  { "id": "rHtidJ", "status":"OK","name": "不讲究", "singers": ["李荣浩"] },
+  { "id": "roix8h", "status":"OK","name": "回归一块小石头", "singers": ["杨千嬅"] }
 ]
