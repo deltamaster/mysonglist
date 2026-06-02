@@ -17,6 +17,9 @@
     "typescript": "4.4.4"
   },
   "scripts": {
+    "fonts:download": "node scripts/download-fonts.js",
+    "prestart": "node scripts/download-fonts.js",
+    "prebuild": "node scripts/download-fonts.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

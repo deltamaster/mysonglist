@@ -1,9 +1,8 @@
 .App {
   text-align: center;
 }
-
 body {
-  font-family: "Sarasa Gothic SC", "更纱黑体 SC", "Noto Sans Mono", "思源黑体", monospace;
+  font-family: "Sarasa Gothic SC", "更纱黑体 SC", "Noto Sans Mono", "Source Han Sans SC", "思源黑体", monospace;
 }
 
 .App-header {

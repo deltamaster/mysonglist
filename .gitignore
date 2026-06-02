@@ -41,6 +41,9 @@ build/Release
 # Build directory
 build/
 
+# Downloaded fonts (fetched from Tsinghua mirror via npm run fonts:download)
+public/fonts/*.otf
+
 # Dependency directories
 node_modules/
 jspm_packages/
