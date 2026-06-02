@@ -14,7 +14,7 @@ const SongContainer = styled.div<SongItemProps>`
   text-shadow: 0px 0px 3px #c7b38b;
   color: #fff;
   font-size: 20px;
-  font-family: 'Courier New', Consolas, Monaco, monospace;
+  font-family: inherit;
   /* Dynamic grid column span based on song name length */
   grid-column-end: span
     ${(props) => Math.min(2 + Math.floor(props.song.name.length / 2.5), 8)};
