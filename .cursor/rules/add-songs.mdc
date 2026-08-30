@@ -1,0 +1,13 @@
+---
+description: How to add songs to the playlist
+globs: public/songs.json
+alwaysApply: false
+---
+
+# Adding songs
+
+Use the `add-songs` skill. Run `node scripts/add-songs.js` — do not hand-edit this file.
+
+- Fields: `id`, `status: "OK"`, `name`, `singers` (array)
+- Keep provided ids; otherwise generate unique `r` + 5 alphanumeric ids
+- After adding, commit `public/songs.json` and push unless the user says not to

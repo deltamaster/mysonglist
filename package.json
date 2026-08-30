@@ -18,6 +18,7 @@
   },
   "scripts": {
     "fonts:download": "node scripts/download-fonts.js",
+    "songs:add": "node scripts/add-songs.js",
     "prestart": "node scripts/download-fonts.js",
     "prebuild": "node scripts/download-fonts.js",
     "start": "react-scripts start",
