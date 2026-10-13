@@ -463,5 +463,8 @@
   { "id": "rPIDlq", "status":"OK","name": "天黑黑", "singers": ["孙燕姿"] },
   { "id": "rLE0VC", "status":"OK","name": "荒漠上行走", "singers": ["亚森"] },
   { "id": "rY19ST", "status":"OK","name": "白月光与朱砂痣", "singers": ["大籽"] },
-  { "id": "riEZMY", "status":"OK","name": "吵架歌", "singers": ["汪苏泷","Hri荷莉"] }
+  { "id": "riEZMY", "status":"OK","name": "吵架歌", "singers": ["汪苏泷","Hri荷莉"] },
+  { "id": "rGJHCd", "status":"OK","name": "甲乙丙丁", "singers": ["李佳薇"] },
+  { "id": "rYo7FA", "status":"OK","name": "金风玉露", "singers": ["旅行新蜜蜂"] },
+  { "id": "rRmHUn", "status":"OK","name": "胡撸胡撸瓢儿", "singers": ["大张伟"] }
 ]
